@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +13,9 @@ import { UsersComponent } from './users/users.component';
 import { UserListComponent } from './users/user-list/user-list.component';
 import { UserEditComponent } from './users/user-edit/user-edit.component';
 import { LoginComponent } from './login/login.component';
+import { CourseItemComponent } from './courses/course-item/course-item.component';
+import { from } from 'rxjs';
+import { TabComponent } from './tab/tab.component';
 
 @NgModule({
   declarations: [
@@ -24,11 +28,14 @@ import { LoginComponent } from './login/login.component';
     UsersComponent,
     UserListComponent,
     UserEditComponent,
-    LoginComponent
+    LoginComponent,
+    CourseItemComponent,
+    TabComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

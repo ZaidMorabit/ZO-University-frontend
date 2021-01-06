@@ -1,0 +1,9 @@
+<ul class="nav nav-tabs">
+    <li 
+        *ngFor="let item of items" 
+        role="presentation" 
+        [routerLink]="item" 
+        routerLinkActive="active">
+        <a >{{prefix}} {{item}}</a>
+    </li>
+</ul>
