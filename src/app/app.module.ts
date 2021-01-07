@@ -16,6 +16,8 @@ import { LoginComponent } from './login/login.component';
 import { CourseItemComponent } from './courses/course-item/course-item.component';
 import { from } from 'rxjs';
 import { TabComponent } from './tab/tab.component';
+import { CourseAddComponent } from './courses/course-add/course-add.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,12 +32,14 @@ import { TabComponent } from './tab/tab.component';
     UserEditComponent,
     LoginComponent,
     CourseItemComponent,
-    TabComponent
+    TabComponent,
+    CourseAddComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,28 @@
-<app-course-item
+<div class="row">
+    <div class="col-md-10">
+        <app-tab *ngIf="levels.length>1"
+            [prefix]="'Niveau'"
+            [path]="'/courses/level/'"
+            [items]="levels" ></app-tab>
+    </div>
+    <div class="col-md-1">
+        <a routerLink="/courses/add"  class="btn btn-default">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            ajouter un cours
+        </a>
+        
+    </div>
+</div>
+
+
+<div 
+    class="panel"
     *ngFor="let course of courses"
-    [course]= "course"></app-course-item>
-    
+    [routerLink]="['/courses',course.id]">
+    <div class="panel-heading">
+        <h3 class="panel-title">{{course.title}}</h3>
+    </div>
+    <div class="panel-body">
+        Niveau: {{course.level}}
+    </div>
+</div>

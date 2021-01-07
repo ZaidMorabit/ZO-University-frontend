@@ -2,3 +2,6 @@
 a{
     cursor: pointer;
 }
+li{
+    outline: none;
+}

@@ -8,11 +8,11 @@
           </div>
           <div class="navbar-collapse" [class.collapse]="collapsed" (window:resize)="collapsed = true">
             <ul class="nav navbar-nav">
-                <li><a routerLink="courses">Cours</a></li>
-                <li ><a routerLink="users" >Utilisateurs</a></li>
+                <li routerLink="courses" routerLinkActive="active"><a >Cours</a></li>
+                <li routerLink="users" routerLinkActive="active" ><a >Utilisateurs</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><button routerLink="login" type="button" class="btn btn-default navbar-btn">Sign in</button></li>
+                <li><button (click)="onAuth()" type="button" class="btn btn-default navbar-btn">{{ !isAuth ? "Sign in" : "Sign out" }}</button></li>
             </ul>
         </div>
     </div>

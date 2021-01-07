@@ -1,9 +1,15 @@
-<ul class="nav nav-tabs">
+<ul class="nav nav-pills">
     <li 
         *ngFor="let item of items" 
         role="presentation" 
-        [routerLink]="item" 
+        [routerLink]="path+item" 
         routerLinkActive="active">
         <a >{{prefix}} {{item}}</a>
     </li>
+</ul>
+<ul class="nav nav-pills">
+    <li>
+        <a [routerLink]="path">Afficher tout</a>
+    </li>
+    
 </ul>

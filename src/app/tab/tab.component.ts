@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class TabComponent implements OnInit {
 
   @Input('prefix') prefix: string;
+  @Input('path') path: string;
   @Input('items') items: any[];
 
   constructor() { }
