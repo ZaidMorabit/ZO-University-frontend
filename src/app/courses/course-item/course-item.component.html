@@ -1,11 +1,107 @@
-<h2>{{ course.title }} - Module {{ course.level }} </h2>
+<h2 *ngIf="!isInModification">{{ course.title }} - Niveau {{ course.level }} <button class="btn btn-default" (click)="onModification()"><span class="glyphicon glyphicon-pencil"></span></button> </h2>
+<div *ngIf="isInModification" class="row">
+  <div class="col-md-7">
+    <form class="form-group" #courseForm="ngForm" (ngSubmit)="onSubmitModification(courseForm)">
+      <div class="form-group">
+        <label for="courseTitle">Titre:</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          id="courseTitle" 
+          placeholder="Titre"
+          name="courseTitle"
+          [ngModel]="course.title"
+          required>
+      </div>
+      <div class="form-group">
+        <label for="level">Niveau:</label>
+        <input 
+          type="number" 
+          class="form-control" 
+          id="level" 
+          placeholder="Niveau"
+          name="level"
+          value="course.level"
+          [ngModel]="course.level"
+          required>
+      </div>
+      <div class="toRight">
+        <div>
+          <button type="button" class="btn btn-danger" (click)="onDiscardModification()">Annuler</button>
+        </div>
+        <div>
+          <button [disabled]="courseForm.invalid || courseForm.pristine" type="submit" class="btn btn-success">Modifier</button>
+        </div>
+        
+      </div>
+      
+    </form>
+  </div>
+</div>
+
 <hr>
-<h3>Annonces:</h3>
+
+<a class="btn btn-primary">Afficher la liste des inscrits</a>
+
+
+<hr>
+<!-- Announcements *************************************************************************************************************************** -->
+  <div class="row ">    
+    <div class="col-md-6">
+      <h3>Annonces <a style="color: green;" class="btn btn-default" (click)="onAddAnnouncement()"><span class="glyphicon glyphicon-plus"></span></a></h3>
+    </div>
+  </div>
+
+
+<div *ngIf="isInAddAnnouncement" class="row">
+  <div class="col-md-7">
+    <form class="form-group" #announcementForm="ngForm" (ngSubmit)="onSubmitAnnouncement(announcementForm)">
+      <div class="form-group">
+        <label for="courseTitle">Titre:</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          id="courseTitle" 
+          placeholder="Titre"
+          name="courseTitle"
+          ngModel
+          required>
+      </div>
+      <div class="form-group">
+        <label for="level">Contenu:</label>
+        <textarea 
+          type="text" 
+          class="form-control" 
+          rows="5"
+          id="level" 
+          placeholder="Contenu"
+          name="level"
+          value="course.level"
+          ngModel
+          required>
+          </textarea>
+      </div>
+      <div class="toRight">
+        <div>
+          <button type="button" class="btn btn-danger" (click)="onDiscardAnnouncement()">Annuler</button>
+        </div>
+        <div>
+          <button [disabled]="announcementForm.invalid || !announcementForm.touched" type="submit" class="btn btn-success">Ajouter</button>
+        </div>
+        
+      </div>
+      
+    </form>
+  </div>
+</div>
 
 <div class="row">
   <div class="col-md-7">
     <div class="panel panel-default">
-        <div class="panel-heading">Annoucements</div>
+        <div class="panel-heading alignHorizontally">
+          <div>Annoucements</div>
+          <div>{{ 1610416015482 | date:'dd/MM/yyyy HH:mm'}}  <a style="color: red;"><span class="glyphicon glyphicon-remove"></span></a></div>
+        </div>
         <div class="panel-body">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore pariatur, quas ratione repellendus nesciunt animi debitis numquam quod, nobis eos vero consequuntur qui nam cupiditate reiciendis, sequi nihil officia? Quaerat.
         </div>
@@ -16,7 +112,10 @@
 <div class="row">
   <div class="col-md-7">
     <div class="panel panel-default">
-        <div class="panel-heading">Annoucements</div>
+        <div class="panel-heading alignHorizontally">
+          <div>Annoucements</div>
+          <div>{{ 1610416095383 | date:'dd/MM/yyyy HH:mm'}}  <a style="color: red;"><span class="glyphicon glyphicon-remove"></span></a></div>
+        </div>
         <div class="panel-body">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore pariatur, quas ratione repellendus nesciunt animi debitis numquam quod, nobis eos vero consequuntur qui nam cupiditate reiciendis, sequi nihil officia? Quaerat.
         </div>
@@ -27,11 +126,39 @@
       
 <div class="panel-body">
   <div class="col-md-6"> </div>
-  <a href="">More...</a>
+  <a class="btn btn-primary">Plus...</a>
 </div>
 <hr>
+<!-- Files *************************************************************************************************************************** -->
+<h3>Fichiers <a style="color: green;" class="btn btn-default" (click)="onAddFile()"><span class="glyphicon glyphicon-plus"></span></a></h3>
 
-<h3>Fichiers:</h3>
+<div *ngIf="isInAddFile" class="row">
+  <div class="col-md-7">
+    <form class="form-group" #fileForm="ngForm" (ngSubmit)="onSubmitAddFile(fileForm)">
+      <div class="form-group">
+        <label for="file">Fichier:</label>
+        <input 
+          type="file" 
+          class="form-control" 
+          id="file" 
+          placeholder="Niveau"
+          name="file"
+          ngModel
+          required>
+      </div>
+      <div class="toRight">
+        <div>
+          <button type="button" class="btn btn-danger" (click)="onDiscardAddFile()">Annuler</button>
+        </div>
+        <div>
+          <button [disabled]="fileForm.invalid" type="submit" class="btn btn-success">Ajouter</button>
+        </div>
+        
+      </div>
+      
+    </form>
+  </div>
+</div>
 
 <div class="row">
   <div class="col-md-7">
@@ -39,9 +166,18 @@
         <div class="panel-heading">Catégorie</div>
         <div class="panel-body">
           <ul class="list-group">
-            <li class="list-group-item">fichier1.xls</li>
-            <li class="list-group-item">fichier2.pdf</li>
-            <li class="list-group-item">fichier3.docx</li>
+            <li class="list-group-item alignHorizontally">
+              <div>fichier1.xls</div>
+              <div><a ><span class="glyphicon glyphicon-download-alt"></span></a></div>
+            </li>
+            <li class="list-group-item alignHorizontally">
+              <div>fichier2.pdf</div>
+              <div><a ><span class="glyphicon glyphicon-download-alt"></span></a></div>
+            </li>
+            <li class="list-group-item alignHorizontally">
+              <div>fichier3.docx</div>
+              <div><a ><span class="glyphicon glyphicon-download-alt"></span></a></div>
+            </li>
           </ul>
         </div>
     </div>
@@ -54,9 +190,18 @@
         <div class="panel-heading">Catégorie 2</div>
         <div class="panel-body">
           <ul class="list-group">
-            <li class="list-group-item">fichier1.xls</li>
-            <li class="list-group-item">fichier2.pdf</li>
-            <li class="list-group-item">fichier3.docx</li>
+            <li class="list-group-item alignHorizontally">
+              <div>fichier1.xls</div>
+              <div><a ><span class="glyphicon glyphicon-download-alt"></span></a></div>
+            </li>
+            <li class="list-group-item alignHorizontally">
+              <div>fichier2.pdf</div>
+              <div><a ><span class="glyphicon glyphicon-download-alt"></span></a></div>
+            </li>
+            <li class="list-group-item alignHorizontally">
+              <div>fichier3.docx</div>
+              <div><a ><span class="glyphicon glyphicon-download-alt"></span></a></div>
+            </li>
           </ul>
         </div>
     </div>

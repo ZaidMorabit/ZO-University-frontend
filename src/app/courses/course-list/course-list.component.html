@@ -5,15 +5,13 @@
             [path]="'/courses/level/'"
             [items]="levels" ></app-tab>
     </div>
-    <div class="col-md-1">
+    <div *ngIf="isAuth" class="col-md-1">
         <a routerLink="/courses/add"  class="btn btn-default">
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
             ajouter un cours
         </a>
-        
     </div>
 </div>
-
 
 <div 
     class="panel"

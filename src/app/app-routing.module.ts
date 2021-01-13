@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CourseAddComponent } from './courses/course-add/course-add.component';
+import { CourseEditComponent } from './courses/course-edit/course-edit.component';
 import { CourseItemComponent } from './courses/course-item/course-item.component';
 import { CourseListComponent } from './courses/course-list/course-list.component';
 import { CoursesComponent } from './courses/courses.component';
@@ -18,7 +19,8 @@ const routes: Routes = [
       { path: "level", component: CourseListComponent },
       { path: "level/:id", component: CourseListComponent },
       { path: "add", component: CourseAddComponent },
-      { path: ":id", component: CourseItemComponent }
+      { path: ":id", component: CourseItemComponent},
+      { path: "edit/:id", component: CourseEditComponent}
     ]
   },
   {
